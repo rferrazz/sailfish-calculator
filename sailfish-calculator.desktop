@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=sailfish-calculator
+Icon=icon-launcher-gallery
+Exec=invoker --type=j -s /opt/sdk/bin/sailfish-calculator
+Comment=Sailfish UI application
+
+
