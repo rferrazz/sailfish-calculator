@@ -8,7 +8,7 @@ SOURCES += main.cpp
 HEADERS +=
 
 # QML files and folders
-qml.files = *.qml pages cover elements main.qml engine.js formula.js
+qml.files = *.qml engine.js pages cover elements main.qml
 
 # The .desktop file
 desktop.files = sailfish-calculator.desktop
@@ -16,8 +16,7 @@ desktop.files = sailfish-calculator.desktop
 # Please do not modify the following line.
 include(sailfishapplication/sailfishapplication.pri)
 
-OTHER_FILES = rpm/sailfish-calculator.yaml \
-    pages/Calculator.qml \
-    engine.js \
-    formula.js
+OTHER_FILES = \
+    rpm/sailfish-calculator.yaml \
+    rpm/sailfish-calculator.spec
 

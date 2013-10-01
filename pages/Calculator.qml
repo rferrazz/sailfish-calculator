@@ -7,27 +7,26 @@
 ** Dalius Dobravolskas <dalius@sandbox.lt>
 ** Riccardo Ferrazzo <f.riccardo87@gmail.com>
 **
-** This file is part of AfroFish Calculator.
-** AfroFish Calculator is free software: you can redistribute it and/or modify
+** This file is part of ScientificCalc Calculator.
+** ScientificCalc Calculator is free software: you can redistribute it and/or modify
 ** it under the terms of the GNU General Public License as published by
 ** the Free Software Foundation, either version 3 of the License, or
 ** (at your option) any later version.
 **
-** AfroFish Calculator is distributed in the hope that it will be useful,
+** ScientificCalc Calculator is distributed in the hope that it will be useful,
 ** but WITHOUT ANY WARRANTY; without even the implied warranty of
 ** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 ** GNU General Public License for more details.
 **
 ** You should have received a copy of the GNU General Public License
-** along with AfroFish Calculator.  If not, see <http://www.gnu.org/licenses/>.
+** along with ScientificCalc Calculator.  If not, see <http://www.gnu.org/licenses/>.
 **
 ****************************************************************************************/
 
-import QtQuick 1.1
+import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../elements"
 import "../engine.js" as CALC
-import "../formula.js" as F
 
 Page {
     id: page
@@ -38,10 +37,12 @@ Page {
     property string answer: '';
     property string angularUnit: "RAD"
 
+    property var formula: []
+
     function formulaPush(visual, engine, type) {
         var prev = null;
-        if (F.formula.length > 0)
-            prev = F.formula[F.formula.length-1];
+        if (formula.length > 0)
+            prev = formula[formula.length-1];
 
         console.log(prev);
 
@@ -57,22 +58,22 @@ Page {
         if (visual_text !== null && engine_text !== null) {
             formula_text += visual_text;
             formula_text_for_engine += engine_text;
-            F.formula.push({'visual': visual_text, 'engine': engine_text, 'type': fixed_type});
+            formula.push({'visual': visual_text, 'engine': engine_text, 'type': fixed_type});
 
             answer = calculate()
         }
     }
 
     function formulaPop() {
-        if (F.formula.length > 0) {
-            var prev = F.formula[F.formula.length-1];
+        if (formula.length > 0) {
+            var prev = formula[formula.length-1];
             formula_text = formula_text.substring(0, formula_text.length - prev.visual.length);
             formula_text_for_engine = formula_text_for_engine.substring(0, formula_text_for_engine.length - prev.engine.length);
             if (prev.type === 'function' || (prev.type === 'group' && prev.engine === '(' || prev.engine === '*('))
                 brackets_added = brackets_added.substring(0, brackets_added.length-2)
             else if (prev.type === 'group' && prev.engine === ')')
                 brackets_added += " )"
-            F.formula.pop();
+            formula.pop();
 
             answer = calculate()
         }
@@ -81,7 +82,7 @@ Page {
     function formulaReset() {
         formula_text = '';
         formula_text_for_engine = '';
-        F.formula = [];
+        formula = [];
         answer = "";
         brackets_added = '';
     }
@@ -120,8 +121,8 @@ Page {
             var fd = JSON.parse(formulaData);
 
             var prev = null;
-            if (F.formula.length > 0)
-                prev = F.formula[F.formula.length-1];
+            if (formula.length > 0)
+                prev = formula[formula.length-1];
 
             var result = CALC.getFormulaTexts(prev, fd[0].engine, fd[0].engine, fd[0].type, brackets_added.length/2)
 
@@ -129,7 +130,7 @@ Page {
                 for (var idx = 0; idx < fd.length; idx++) {
                     formula_text += fd[idx].visual;
                     formula_text_for_engine += fd[idx].engine;
-                    F.formula.push({'visual': fd[idx].visual, 'engine': fd[idx].engine, 'type': fd[idx].type});
+                    formula.push({'visual': fd[idx].visual, 'engine': fd[idx].engine, 'type': fd[idx].type});
                 }
                 answer = calculate()
             }
@@ -149,7 +150,7 @@ Page {
         function addCurrentToMemory() {
             if(formula_text === '') return;
             memory.get(memory.count-1).isLastItem = false
-            memory.get(memory.count-1).formula_data = JSON.stringify(F.formula)
+            memory.get(memory.count-1).formula_data = JSON.stringify(formula)
             memory.append({'formula': memory.get(memory.count-1).formula, 'answer': memory.get(count-1).answer, 'formula_data': '', 'isLastItem': true})
             positionViewAtIndex(memory.count-1, ListView.Beginning);
         }

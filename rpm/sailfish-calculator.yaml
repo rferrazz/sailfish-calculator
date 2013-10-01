@@ -1,31 +1,25 @@
-Name:    sailfish-calculator
-Summary: Calculator
-Version: 0.1
+Name: sailfish-calculator
+Summary: SientificCalc
+Version: 1.0
 Release: 1
-Group:   Qt/Qt
+Group: Qt/Qt
 License: LICENSE
 Sources:
-    - "%{name}-%{version}.tar.bz2"
+- '%{name}-%{version}.tar.bz2'
 Description: |
-  Sailfish calculator (port of the ubuntu phone calculator)
-# Qt Applications generally don't use configure and do use qmake
+  Short description of my SailfishOS Application
 Configure: none
-Builder: qmake
-# pkgconfigs we depend on to build
+Builder: qtc5
 PkgConfigBR:
-  - ""
-# Packages we depend on to build
-PkgBR:
-  - ""
-# Packages we require to run
+- qdeclarative5-boostable
+- Qt5Core
+- Qt5Qml
+- Qt5Quick
 Requires:
-  - ""
+- sailfishsilica-qt5
+- mapplauncherd-booster-silica-qt5
 Files:
-  - "/opt"
-
-
-
-# This is a spectacle file.
-# It is a yaml file that uses specify to manage the spec file used to package the application.
-# See https://wiki.merproject.org/wiki/Spectacle for more information
-
+- /usr/share/applications
+- /usr/share/sailfish-calculator
+- /usr/bin
+- 

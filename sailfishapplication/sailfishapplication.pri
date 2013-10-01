@@ -1,19 +1,18 @@
-QT += declarative
+QT += quick qml
 
 SOURCES += $$PWD/sailfishapplication.cpp
 HEADERS += $$PWD/sailfishapplication.h
 INCLUDEPATH += $$PWD
 
-TARGETPATH = /opt/sdk/bin
+TARGETPATH = /usr/bin
 target.path = $$TARGETPATH
 
-DEPLOYMENT_PATH = /opt/sdk/share/$$TARGET
+DEPLOYMENT_PATH = /usr/share/$$TARGET
 qml.path = $$DEPLOYMENT_PATH
-desktop.path = /opt/sdk/share/applications
+desktop.path = /usr/share/applications
 
 contains(CONFIG, desktop) {
     DEFINES *= DESKTOP
-    QT += opengl
 }
 
 INSTALLS += target qml desktop
