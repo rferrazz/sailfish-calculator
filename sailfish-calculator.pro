@@ -22,5 +22,6 @@ OTHER_FILES += qml/scientific-calculator.qml \
     qml/elements/CalcScreen.qml \
     rpm/scientific-calculator.spec \
     rpm/scientific-calculator.yaml \
-    scientific-calculator.desktop
+    scientific-calculator.desktop \
+    scientific-calculator.png
 

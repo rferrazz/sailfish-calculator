@@ -62,10 +62,19 @@ CoverBackground {
             }
         }
     }
-    CoverActionList{
-        CoverAction{
-            id: copy
-            iconSource: "image://Theme/icon-cover-clear"
+    Item {
+        id: keyboard
+        anchors {
+            top: screen.bottom
+            bottom: page.bottom
+            left: page.left
+            right: page.right
+        }
+
+        Image{
+            id: icon
+            source: "/usr/share/icons/hicolor/90x90/apps/scientific-calculator.png"
+            anchors.centerIn: parent
         }
     }
 }
