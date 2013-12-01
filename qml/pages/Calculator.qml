@@ -146,6 +146,7 @@ Page {
 
         property string currentFormula: '%1<font color="lightgray">%2</font>'.arg(formula_text).arg(brackets_added)
         property string currentAnswer: answer
+        property int screenHeight: 0
 
         function addCurrentToMemory() {
             if(formula_text === '') return;
@@ -166,10 +167,16 @@ Page {
             width: formulaView.width
 
             onUseAnswer: addFromMemory(answerToUse, formulaData)
+
+            Component.onCompleted: {
+                if (formulaView.screenHeight == 0)
+                    formulaView.screenHeight = height
+            }
         }
 
         footer: StdKeyboard{
             width: parent.width
+            height: page.height - formulaView.screenHeight
         }
 
         model: Memory { id: memory }
@@ -181,12 +188,6 @@ Page {
 
         onCurrentAnswerChanged: {
             memory.get(memory.count-1).answer = currentAnswer
-        }
-
-        onCountChanged: {
-            if (currentIndex == 1){
-                footerItem.height = window.height - currentItem.height
-            }
         }
 
         PushUpMenu {

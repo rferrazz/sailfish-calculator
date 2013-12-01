@@ -61,6 +61,7 @@ Item{
             Label {
                 id: formulaLabel
                 width: parent.width- backBtn.width -4
+                height: font.pixelSize + 10
                 horizontalAlignment: Text.AlignRight
                 font.family: Theme.fontFamily
                 font.pixelSize: Theme.fontSizeExtraLarge
@@ -79,6 +80,7 @@ Item{
         Label {
             id: answerLabel
             width: parent.width
+            height: font.pixelSize + 10
             font.family: Theme.fontFamily
             font.pixelSize: Theme.fontSizeExtraLarge
             elide: Text.ElideRight
