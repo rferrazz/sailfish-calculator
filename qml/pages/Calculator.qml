@@ -44,8 +44,6 @@ Page {
         if (formula.length > 0)
             prev = formula[formula.length-1];
 
-        console.log(prev);
-
         var result = CALC.getFormulaTexts(prev, visual, engine, type, brackets_added.length/2)
 
         var visual_text = result[0];
@@ -196,7 +194,6 @@ Page {
                 text: "Change mode to %1".arg(_modes[(_modes.indexOf(angularUnit)+1)%3])
                 onClicked: {
                     angularUnit = _modes[(_modes.indexOf(angularUnit)+1)%3];
-                    console.log(angularUnit)
                     answer = calculate();
                 }
             }
