@@ -1,5 +1,5 @@
-Name: sailfish-calculator
-Summary: SientificCalc
+Name: scientific-calculator
+Summary: Scientific Calculator
 Version: 1.0
 Release: 1
 Group: Qt/Qt
@@ -11,15 +11,18 @@ Description: |
 Configure: none
 Builder: qtc5
 PkgConfigBR:
-- qdeclarative5-boostable
 - Qt5Core
 - Qt5Qml
 - Qt5Quick
+- sailfishapp
 Requires:
 - sailfishsilica-qt5
-- mapplauncherd-booster-silica-qt5
 Files:
+- /usr/share/icons/hicolor/90x90/apps
 - /usr/share/applications
-- /usr/share/sailfish-calculator
+- /usr/share/scientific-calculator
 - /usr/bin
-- 
+- '%{_datadir}/icons/hicolor/90x90/apps/%{name}.png'
+- '%{_datadir}/applications/%{name}.desktop'
+- '%{_datadir}/%{name}/qml'
+- '%{_bindir}'

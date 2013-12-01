@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=sailfish-calculator
-Icon=icon-launcher-gallery
-Exec=invoker --type=silica-qt5 -s /usr/bin/sailfish-calculator
-Comment=Sailfish UI application
-
-

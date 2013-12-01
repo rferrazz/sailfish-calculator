@@ -1,22 +1,26 @@
-# The name of your app
-TARGET = sailfish-calculator
+# The name of your app.
+# NOTICE: name defined in TARGET has a corresponding QML filename.
+#         If name defined in TARGET is changed, following needs to be
+#         done to match new name:
+#         - corresponding QML filename must be changed
+#         - desktop icon filename must be changed
+#         - desktop filename must be changed
+#         - icon definition filename in desktop file must be changed
+TARGET = scientific-calculator
 
-# C++ sources
-SOURCES += main.cpp
+CONFIG += sailfishapp
 
-# C++ headers
-HEADERS +=
+SOURCES += src/scientific-calculator.cpp
 
-# QML files and folders
-qml.files = *.qml engine.js pages cover elements main.qml
-
-# The .desktop file
-desktop.files = sailfish-calculator.desktop
-
-# Please do not modify the following line.
-include(sailfishapplication/sailfishapplication.pri)
-
-OTHER_FILES = \
-    rpm/sailfish-calculator.yaml \
-    rpm/sailfish-calculator.spec
+OTHER_FILES += qml/scientific-calculator.qml \
+    qml/engine.js \
+    qml/cover/CoverPage.qml \
+    qml/pages/Calculator.qml \
+    qml/elements/StdKeyboard.qml \
+    qml/elements/Memory.qml \
+    qml/elements/KeyboardButton.qml \
+    qml/elements/CalcScreen.qml \
+    rpm/scientific-calculator.spec \
+    rpm/scientific-calculator.yaml \
+    scientific-calculator.desktop
 
