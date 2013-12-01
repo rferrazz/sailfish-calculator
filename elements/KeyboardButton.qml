@@ -28,6 +28,6 @@ import Sailfish.Silica 1.0
 
 Button {
     id: buttonRect
-    width: 100
-    height: 65
+    width: buttonWidth
+    height: buttonHeigt
 }
