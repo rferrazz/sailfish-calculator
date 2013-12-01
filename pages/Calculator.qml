@@ -143,7 +143,7 @@ Page {
         anchors.fill: parent
         snapMode: ListView.SnapOneItem
 
-        property int screenHeight: 10
+
         property string currentFormula: '%1<font color="lightgray">%2</font>'.arg(formula_text).arg(brackets_added)
         property string currentAnswer: answer
 
@@ -166,15 +166,10 @@ Page {
             width: formulaView.width
 
             onUseAnswer: addFromMemory(answerToUse, formulaData)
-
-            Component.onCompleted: {
-                formulaView.screenHeight = height;
-            }
         }
 
         footer: StdKeyboard{
             width: parent.width
-            height: page.height-formulaView.screenHeight
         }
 
         model: Memory { id: memory }
@@ -186,6 +181,12 @@ Page {
 
         onCurrentAnswerChanged: {
             memory.get(memory.count-1).answer = currentAnswer
+        }
+
+        onCountChanged: {
+            if (currentIndex == 1){
+                footerItem.height = window.height - currentItem.height
+            }
         }
 
         PushUpMenu {

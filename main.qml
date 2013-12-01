@@ -29,6 +29,7 @@ import "pages"
 
 ApplicationWindow
 {
+    id: window
     initialPage: Calculator{ id: calculator }
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
 }
