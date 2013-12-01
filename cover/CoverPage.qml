@@ -27,39 +27,48 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 CoverBackground {
+    id: page
+
+    Rectangle {
+        id: screen
+        color: Theme.secondaryHighlightColor
+        anchors{
+            top: parent.top
+            left: parent.left
+            right: parent.right
+        }
+        height: column.height + 10
 
         Column{
-            anchors{
+            id: column
+            anchors {
                 top: parent.top
                 left: parent.left
                 topMargin: 10
-                leftMargin: 2
+                leftMargin: 5
             }
-            width: parent.width - 4
+
+            width: parent.width - 10
             Label{
                 width: parent.width
                 text: calculator.formula_text+calculator.brackets_added
                 horizontalAlignment: Text.AlignRight
+                color: Theme.primaryColor
             }
 
-        Label{
-            width: parent.width
-            text: '= ' + calculator.answer
+            Label{
+                width: parent.width
+                text: '= ' + calculator.answer
+            }
         }
-        }
-
-        Label {
-            id: label
-            anchors.centerIn: parent
-            text: "Calculator"
-        }
-        //    CoverActionList{
-        //        CoverAction{
-        //            id: copy
-        //            iconSource: "image://Theme/icon-cover-paste"
-        //        }
-        //    }
     }
+    CoverActionList{
+        CoverAction{
+            id: copy
+            iconSource: "image://Theme/icon-cover-clear"
+        }
+    }
+}
 
 
 
