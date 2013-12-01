@@ -34,21 +34,6 @@ Item{
 
     signal useAnswer(string answerToUse, string formulaData)
 
-    Label{
-        id: drg
-        visible: isLastItem
-        anchors{
-            top: parent.top
-            left: parent.left
-            topMargin: 4
-            leftMargin: 4
-        }
-        font.family: Theme.fontFamily
-        font.pixelSize: Theme.fontSizeExtraSmall
-        color: Theme.secondaryColor
-        text: angularUnit[0]
-    }
-
     Column {
         id: columnA
         spacing: 10
@@ -57,6 +42,16 @@ Item{
             top: parent.top
             left: parent.left
             leftMargin: 4
+        }
+
+        Label{
+            id: drg
+            visible: isLastItem
+            font.family: Theme.fontFamily
+            font.pixelSize: Theme.fontSizeExtraSmall
+            color: Theme.secondaryColor
+            height: lineHeight + 10
+            text: angularUnit[0]
         }
 
         Row{
