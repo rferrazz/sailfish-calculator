@@ -6,13 +6,33 @@
 #         - desktop icon filename must be changed
 #         - desktop filename must be changed
 #         - icon definition filename in desktop file must be changed
-TARGET = scientific-calculator
+TARGET = harbour-scientific-calculator
 
-CONFIG += sailfishapp
+QT += quick qml
 
-SOURCES += src/scientific-calculator.cpp
+target.path = /usr/bin
 
-OTHER_FILES += qml/scientific-calculator.qml \
+qml.files = qml
+qml.path = /usr/share/$${TARGET}
+
+desktop.files = $${TARGET}.desktop
+desktop.path = /usr/share/applications
+
+icon.files = $${TARGET}.png
+icon.path = /usr/share/icons/hicolor/86x86/apps
+
+INSTALLS += target qml desktop icon
+
+CONFIG += link_pkgconfig
+PKGCONFIG += sailfishapp
+INCLUDEPATH += /usr/include/sailfishapp
+
+OTHER_FILES += $$files(rpm/*)
+
+SOURCES += \
+    src/harbour-scientific-calculator.cpp
+
+OTHER_FILES += qml/harbour-scientific-calculator.qml \
     qml/engine.js \
     qml/cover/CoverPage.qml \
     qml/pages/Calculator.qml \
@@ -20,8 +40,7 @@ OTHER_FILES += qml/scientific-calculator.qml \
     qml/elements/Memory.qml \
     qml/elements/KeyboardButton.qml \
     qml/elements/CalcScreen.qml \
-    rpm/scientific-calculator.spec \
+    rpm/harbour-scientific-calculator.spec \
     rpm/scientific-calculator.yaml \
-    scientific-calculator.desktop \
-    scientific-calculator.png
-
+    harbour-scientific-calculator.desktop \
+    harbour-scientific-calculator.png

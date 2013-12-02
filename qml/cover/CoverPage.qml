@@ -71,10 +71,11 @@ CoverBackground {
             right: page.right
         }
 
-        Image{
-            id: icon
-            source: "/usr/share/icons/hicolor/90x90/apps/scientific-calculator.png"
+        Label{
             anchors.centerIn: parent
+            text: "SciCalc"
+            color: Theme.secondaryColor
+            font.pixelSize: Theme.fontSizeExtraLarge
         }
     }
 }
